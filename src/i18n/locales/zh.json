@@ -2,8 +2,23 @@
   "home": {
     "label": "首页"
   },
+  "career": {
+    "label": "生涯"
+  },
+  "search": {
+    "label": "查询"
+  },
+  "match": {
+    "label": "对局信息"
+  },
+  "more": {
+    "label": "其他功能"
+  },
   "languages": {
     "label": "语言"
+  },
+  "opgg": {
+    "label": "OP.GG"
   },
   "settings": {
     "label": "设置",
@@ -15,5 +30,11 @@
       "dark": "深色",
       "system": "系统"
     }
+  },
+  "announcement": {
+    "label": "公告"
+  },
+  "profile": {
+    "label": "个人资料"
   }
 }

@@ -2,8 +2,23 @@
   "home": {
     "label": "Inicio"
   },
+  "career": {
+    "label": "Carrera"
+  },
+  "search": {
+    "label": "Buscar"
+  },
+  "match": {
+    "label": "Información de Partida"
+  },
+  "more": {
+    "label": "Más"
+  },
   "languages": {
     "label": "Idiomas"
+  },
+  "opgg": {
+    "label": "OP.GG"
   },
   "settings": {
     "label": "Configuraciones",
@@ -15,5 +30,11 @@
       "dark": "Oscuro",
       "system": "Sistema"
     }
+  },
+  "announcement": {
+    "label": "Anuncios"
+  },
+  "profile": {
+    "label": "Perfil"
   }
 }

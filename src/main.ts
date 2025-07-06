@@ -1,7 +1,8 @@
-import { useSettingsStore } from '@/stores/settings'
 import { useColorMode } from '@vueuse/core'
 import { createPinia } from 'pinia'
 import { createApp } from 'vue'
+import { fetchClientInfoSse } from '@/api/client/clientInfo'
+import { useSettingsStore } from '@/stores/settings'
 import App from './App.vue'
 import i18n from './i18n'
 import router from './router'
@@ -15,6 +16,8 @@ app.use(router)
 app.use(i18n)
 
 initAppSettings()
+// 启动 SSE
+fetchClientInfoSse.start()
 
 app.mount('#app')
 

@@ -1,5 +1,5 @@
-export interface Response<T> {
-  success: boolean
-  data?: T
-  error?: string
+export interface ApiResponse<T = any> {
+  code: number
+  msg: string
+  data: T
 }

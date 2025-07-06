@@ -2,18 +2,40 @@
   "home": {
     "label": "Home"
   },
+  "career": {
+    "label": "Career"
+  },
+  "search": {
+    "label": "Search"
+  },
+  "match": {
+    "label": "Match Info"
+  },
+  "more": {
+    "label": "More"
+  },
   "languages": {
     "label": "Languages"
   },
+  "opgg": {
+    "label": "OP.GG"
+  },
+
   "settings": {
     "label": "Settings",
     "description": "Manage the app settings and preferences here.",
     "theme": {
       "label": "Theme",
-      "description": "Choose the theme for the app.",
+      "description": "Choose the app theme.",
       "light": "Light",
       "dark": "Dark",
       "system": "System"
     }
+  },
+  "announcement": {
+    "label": "Announcements"
+  },
+  "profile": {
+    "label": "Profile"
   }
 }
