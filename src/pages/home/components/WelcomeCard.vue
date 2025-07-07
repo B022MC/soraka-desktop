@@ -35,7 +35,7 @@ const greeting = computed(() => {
 <template>
   <Card class="w-full sm:max-w-2xl shadow-sm">
     <CardContent
-        class="p-4 sm:p-6 flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start"
+      class="p-4 sm:p-6 flex flex-col sm:flex-row gap-3 sm:gap-4 items-center sm:items-start"
     >
       <!-- 用户头像 -->
       <Avatar class="w-12 h-12 sm:w-16 sm:h-16">
@@ -67,8 +67,8 @@ const greeting = computed(() => {
 
         <!-- 端口 + token -->
         <p
-            v-if="isConnected"
-            class="text-xs sm:text-sm text-muted-foreground text-center sm:text-left"
+          v-if="isConnected"
+          class="text-xs sm:text-sm text-muted-foreground text-center sm:text-left"
         >
           端口：
           <span class="font-medium">{{ clientInfo?.port }}</span>
