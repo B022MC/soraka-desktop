@@ -11,6 +11,11 @@ const routes = [
         component: () => import('@/pages/home/home.vue'),
       },
       {
+        path: 'career',
+        name: 'career',
+        component: () => import('@/pages/career/career.vue'),
+      },
+      {
         path: 'settings',
         name: 'settings',
         component: () => import('@/pages/settings.vue'),

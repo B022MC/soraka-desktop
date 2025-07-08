@@ -17,3 +17,13 @@ export const fetchClientInfoSse = createSSE('/client/streamClientInfo', {
   },
   autoReconnect: true,
 })
+
+/**
+ * 启动英雄联盟客户端
+ */
+export async function openLolClient() {
+  return await request<void>({
+    url: '/client/openLolClient',
+    method: 'POST',
+  })
+}

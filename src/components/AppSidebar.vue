@@ -1,9 +1,24 @@
 <script setup lang="ts">
 import { Icon } from '@iconify/vue'
 import { useI18n } from 'vue-i18n'
+import { openLolClient } from '@/api/client/clientInfo'
+import { Avatar } from '@/components/ui/avatar'
 import { Button } from '@/components/ui/button'
 import { Tooltip, TooltipContent, TooltipTrigger } from '@/components/ui/tooltip'
+import { useClientStore } from '@/stores/client'
+import { useRankStore } from '@/stores/rank'
+import { resolveClientAsset } from '@/utils/lcuAsset'
 
+const clientStore = useClientStore()
+const rankStore = useRankStore()
+async function handleOpenClient() {
+  try {
+    await openLolClient()
+  }
+  catch (err) {
+    console.warn('启动客户端失败:', err)
+  }
+}
 const { t } = useI18n()
 
 const sidebarRoutes = [
@@ -120,20 +135,34 @@ const sidebarRoutes = [
       <!-- 用户头像 -->
       <Tooltip>
         <TooltipTrigger as-child>
-          <RouterLink to="/profile">
+          <div>
+            <!-- 如果客户端已连接，显示用户头像 -->
+            <Avatar
+              v-if="clientStore.info && rankStore.info?.summoner?.profileIconUrl"
+              class="cursor-pointer hover:ring-2 ring-muted"
+            >
+              <img
+                :src="resolveClientAsset(rankStore.info.summoner.profileIconUrl)"
+                alt="Profile Icon"
+                class="w-full h-full object-cover"
+              >
+            </Avatar>
+
+            <!-- 否则显示启动客户端按钮 -->
             <Button
+              v-else
               variant="ghost"
               size="icon"
               class="rounded-lg"
-              :class="'/profile' === $route.path ? 'bg-muted' : ''"
-              :aria-label="t('profile.label')"
+              aria-label="启动客户端"
+              @click="handleOpenClient"
             >
-              <Icon icon="ph:user-circle-duotone" class="size-5" />
+              <Icon icon="ph:power-duotone" class="size-5 text-red-500" />
             </Button>
-          </RouterLink>
+          </div>
         </TooltipTrigger>
         <TooltipContent side="right" :side-offset="5">
-          {{ t('profile.label') }}
+          {{ clientStore.info ? t('profile.label') : '启动客户端' }}
         </TooltipContent>
       </Tooltip>
     </div>

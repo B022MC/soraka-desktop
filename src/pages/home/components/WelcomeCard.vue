@@ -8,12 +8,20 @@ import Card from '@/components/ui/card/Card.vue'
 import CardContent from '@/components/ui/card/CardContent.vue'
 import Progress from '@/components/ui/progress/Progress.vue'
 import { useClientStore } from '@/stores/client'
+import { useRankStore } from '@/stores/rank'
+import { resolveClientAsset } from '@/utils/lcuAsset'
 
+const rankStore = useRankStore()
+
+const profileIconUrl = computed(() => {
+  const path = rankStore.info?.summoner?.profileIconUrl
+  return path ? resolveClientAsset(path) : ''
+})
 const userStore = {
   avatar: '',
-  nickname: '火鸡味锅巴',
+  nickname: '',
 }
-
+const summonerName = computed(() => rankStore.info?.summoner?.gameName || userStore.nickname)
 const clientStore = useClientStore()
 const clientInfo = computed(() => clientStore.info)
 const isConnected = computed(() => clientInfo.value?.connected === true)
@@ -39,14 +47,14 @@ const greeting = computed(() => {
     >
       <!-- 用户头像 -->
       <Avatar class="w-12 h-12 sm:w-16 sm:h-16">
-        <AvatarImage :src="userStore.avatar || 'src/assets/vue.svg'" />
-        <AvatarFallback>{{ userStore.nickname?.charAt(0) ?? 'U' }}</AvatarFallback>
+        <AvatarImage :src="profileIconUrl || 'src/assets/vue.svg'" />
+        <AvatarFallback>{{ summonerName?.charAt(0) ?? 'U' }}</AvatarFallback>
       </Avatar>
 
       <div class="flex-1 space-y-1 w-full">
         <!-- 欢迎语 -->
         <p class="text-base sm:text-lg font-semibold text-center sm:text-left">
-          {{ greeting }}！{{ userStore.nickname }}
+          {{ greeting }}！{{ summonerName }}
         </p>
 
         <!-- 游戏阶段 -->

@@ -9,7 +9,9 @@ export const useClientStore = defineStore('client', {
   }),
   actions: {
     setInfo(data: ClientInfo) {
-      this.info = data
+      if (JSON.stringify(this.info) !== JSON.stringify(data)) {
+        this.info = data
+      }
     },
   },
 })
